@@ -1,0 +1,33 @@
+package com.EMSI.Voiture.model;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+
+
+public class Client {
+    private Long Id;
+    private String Nom;
+    private Float Age;
+    
+    
+    
+	public Client() {
+		super();
+	}
+
+
+
+	public Client(Long id, String nom, Float age) {
+		super();
+		Id = id;
+		Nom = nom;
+		Age = age;
+	}
+    
+    
+}
+
+
+

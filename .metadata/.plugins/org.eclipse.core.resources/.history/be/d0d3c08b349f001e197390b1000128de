@@ -1,0 +1,22 @@
+package com.EMSI.Voiture;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+
+import com.EMSI.Voiture.model.Client;
+import com.EMSI.Voiture.model.voiture;
+import com.EMSI.Voiture.repository.VoitureRepository;
+import com.EMSI.Voiture.service.ClientService;
+
+@SpringBootApplication
+public class VoitureApplication {
+	
+
+	public static void main(String[] args) {
+		SpringApplication.run(VoitureApplication.class, args);
+	}
+
+}

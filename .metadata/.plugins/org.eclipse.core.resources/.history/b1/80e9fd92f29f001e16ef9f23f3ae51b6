@@ -1,0 +1,5 @@
+package com.EMSI.Voiture.config;
+
+public class FeignConfig {
+
+}

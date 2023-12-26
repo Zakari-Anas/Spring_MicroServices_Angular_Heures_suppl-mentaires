@@ -1,0 +1,9 @@
+package com.EMSI.Voiture.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.EMSI.Voiture.model.voiture;
+
+public interface VoitureRepository extends JpaRepository<voiture, Long> {
+
+}

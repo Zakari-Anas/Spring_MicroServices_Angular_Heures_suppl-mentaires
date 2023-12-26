@@ -1,0 +1,12 @@
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
+import com.EMSI.Voiture.model.Client;
+
+@FeignClient(name = "SERVICE-CLIENT")
+public interface ClientService {
+
+    @GetMapping("/clients/{id}") // Assurez-vous que le chemin correspond à l'API du service-client
+    Client getClientById(@PathVariable("id") Long id);
+}

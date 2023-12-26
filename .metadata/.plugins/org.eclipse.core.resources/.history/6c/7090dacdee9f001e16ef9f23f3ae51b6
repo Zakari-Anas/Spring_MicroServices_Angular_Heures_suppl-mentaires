@@ -1,0 +1,9 @@
+package com.EMSI.Voiture.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.EMSI.Voiture.model.Voituredetails;
+
+public interface VoitureDetailsRepository extends JpaRepository<Voituredetails, Long>{
+	public Voituredetails getById(Long id);
+}

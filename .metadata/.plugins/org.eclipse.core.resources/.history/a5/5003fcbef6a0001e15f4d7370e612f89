@@ -1,0 +1,12 @@
+package com.supp.groupe.model;
+
+import jakarta.persistence.Column;
+
+public class GroupeDetails {
+	
+	   private Long id;
+	    private String name;
+	    private String count;
+	    private Prof prof;
+
+}

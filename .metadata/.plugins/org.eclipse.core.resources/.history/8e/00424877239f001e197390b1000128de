@@ -1,0 +1,5 @@
+package com.EMSI.Client.Model;
+
+public class Client {
+
+}

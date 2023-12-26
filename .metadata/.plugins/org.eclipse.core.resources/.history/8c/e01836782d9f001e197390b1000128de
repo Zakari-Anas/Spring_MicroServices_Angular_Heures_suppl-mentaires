@@ -1,0 +1,5 @@
+package com.EMSI.Voiture;
+
+public interface ClientService {
+
+}

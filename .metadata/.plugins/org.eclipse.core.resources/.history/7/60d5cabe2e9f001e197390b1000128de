@@ -1,0 +1,19 @@
+package com.EMSI.Voiture;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.client.RestTemplate;
+
+import com.EMSI.Voiture.model.Client;
+
+@FeignClient(name="SERVICE-CLIENT")
+public interface ClientService {
+	
+	
+	  public static final RestTemplate restTemplate = new RestTemplate();
+
+	    public default Client clientById(Long id) {
+	        String serviceClientUrl = "http://service-client/clients/" + id; // URL du micro-service service-client
+	        return restTemplate.getForObject(serviceClientUrl, Client.class);
+	    }
+}

@@ -1,0 +1,24 @@
+package com.EMSI.Client.Controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.EMSI.Client.Model.Client;
+import com.EMSI.Client.Repository.ClientRepository;
+
+@RestController
+public class ClientController {
+
+	
+	@Autowired
+	private ClientRepository clientRepository;
+	
+	@GetMapping("/clients")
+	private List<Client> chercherClients(){
+		
+		return clientRepository.findAll();		
+	}
+}

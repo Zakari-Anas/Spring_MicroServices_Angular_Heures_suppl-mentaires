@@ -1,0 +1,14 @@
+package com.supp.groupe.model;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+public class Prof {
+
+	private Long id;
+	private String firstName;
+	private String lastName;
+	private String EmailId;
+}

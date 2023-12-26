@@ -1,0 +1,70 @@
+package com.supp.groupe.model;
+
+
+import java.util.HashSet;
+import java.util.Set;
+
+import jakarta.persistence.*;
+
+
+@Entity
+public class Groupe {
+	
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Column(name="name")
+    private String name;
+    @Column(name="count")
+    private String count;
+    private Long id_prof;
+//    @OneToMany(mappedBy = "groupe", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    private Set<Etudiant> etudiants = new HashSet<>();
+    
+    
+    	 public Groupe() {}
+    	
+		 public Groupe(String name,String count) {
+			 super();
+			 this.name=name;
+			 this.count=count;
+			 
+		 }
+
+		public Long getId() {
+			return id;
+		}
+
+		public void setId(Long id) {
+			this.id = id;
+		}
+
+		public String getName() {
+			return name;
+		}
+
+		public void setName(String name) {
+			this.name = name;
+		}
+
+		public String getCount() {
+			return count;
+		}
+
+		public void setCount(String count) {
+			this.count = count;
+		}
+
+
+    // Add and remove etudiants
+//    public void addEtudiant(Etudiant etudiant) {
+//        etudiants.add(etudiant);
+//        etudiant.setGroupe(this);
+//    }
+//
+//    public void removeEtudiant(Etudiant etudiant) {
+//        etudiants.remove(etudiant);
+//        etudiant.setGroupe(null);
+//    }
+
+}

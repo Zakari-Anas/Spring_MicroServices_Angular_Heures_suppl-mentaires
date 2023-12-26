@@ -1,0 +1,5 @@
+package com.EMSI.Voiture.model;
+
+public class Voituredetails {
+
+}

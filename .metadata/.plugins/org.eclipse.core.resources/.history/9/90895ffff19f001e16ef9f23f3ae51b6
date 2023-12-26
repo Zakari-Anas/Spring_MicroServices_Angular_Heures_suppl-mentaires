@@ -1,0 +1,16 @@
+package com.EMSI.Voiture;
+
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
+import com.EMSI.Voiture.model.Client;
+	
+@Service
+@FeignClient(name="service-client")
+public interface ClientService {
+
+    @GetMapping("/client/{id}") // Assurez-vous que le chemin correspond à l'API du service-client
+    Client chercherUnClients(@PathVariable("id") Long id);
+}

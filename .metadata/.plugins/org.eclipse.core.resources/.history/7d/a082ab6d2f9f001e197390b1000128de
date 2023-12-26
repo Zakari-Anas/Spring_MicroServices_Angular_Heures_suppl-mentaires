@@ -1,0 +1,51 @@
+package com.EMSI.Voiture.model;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Transient;
+import lombok.Data;
+
+@Entity
+@Data
+public class voiture {
+
+	@Id
+	@GeneratedValue
+	private Long id;
+	
+	private String matricule;
+	
+	private String marque;
+	
+	private String model;
+	
+	@Transient @ManyToOne
+	private Client client;
+
+
+	public voiture() {
+		super();
+	}
+	
+	public voiture(Long id, String matricule, String marque, String model) {
+		super();
+		this.id = id;
+		this.matricule = matricule;
+		this.marque = marque;
+		this.model = model;
+	}
+
+	
+
+	public voiture(String matricule, String marque, String model) {
+		super();
+		this.matricule = matricule;
+		this.marque = marque;
+		this.model = model;
+	}
+	
+	
+	
+}
