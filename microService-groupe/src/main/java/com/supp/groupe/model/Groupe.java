@@ -24,8 +24,7 @@ public class Groupe {
     private String name;
     @Column(name="count")
     private String count;
-    @Column(name="IdProf")
-    private Long id_prof;
+
 //    @OneToMany(mappedBy = "groupe", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 //    private Set<Etudiant> etudiants = new HashSet<>();
 }
