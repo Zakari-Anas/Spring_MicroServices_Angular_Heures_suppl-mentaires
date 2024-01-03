@@ -1,4 +1,4 @@
-package com.supp.Cours.model;
+package com.supp.emploiDuTemp.model;
 
 import lombok.*;
 
@@ -6,8 +6,8 @@ import lombok.*;
 @NoArgsConstructor
 @Getter
 @Setter
+@ToString
 @Builder
-@Data
 public class CoursDetails {
     private Long id;
 

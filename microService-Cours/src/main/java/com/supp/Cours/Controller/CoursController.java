@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/Cours/")
+@CrossOrigin(origins = "http://localhost:4200" ,allowedHeaders = "*")
 public class CoursController {
 
     @Autowired
@@ -33,5 +34,11 @@ public class CoursController {
 
         return coursService.getCoursById(id);
 
+    }
+
+    @DeleteMapping("{id}")
+    public CoursDetails deleteCour(@PathVariable Long id){
+
+        return coursService.deleteCours(id);
     }
 }

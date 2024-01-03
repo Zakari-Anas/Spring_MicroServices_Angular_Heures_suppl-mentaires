@@ -51,6 +51,53 @@ public class EtudiantService {
                 .build();
 
     }
+
+    public Etudiant UpdateEtudiant(Etudiant e, Long id) throws Exception {
+        Etudiant etudiant = etudiantRepository.findById(id).orElseThrow(() -> new Exception("Group Invalid"));
+
+        etudiant.setEmail(e.getEmail());
+        etudiant.setFirstName(e.getFirstName());
+        etudiant.setLastName(e.getLastName());
+        etudiant.setNiveau(e.getNiveau());
+        etudiant.setId_Groupe(e.getId_Groupe());
+        etudiantRepository.save(etudiant);
+        return etudiant;
+    }
+
+    public List<Groupe> allGroups(){
+
+        Groupe[] groupes = restTemplate.getForObject(this.URLGroups+"/api/Groupe/", Groupe[].class);
+        List<Groupe> groupList = Arrays.asList(groupes);
+
+
+        groupList.forEach(group -> {
+            System.out.println("Group ID: " + group.getId() + ", Group Name: " + group.getName());
+        });
+
+        return groupList;
+    }
+
+  //  public List<EtudiantDetails> getEtudiantByName(String firstname){
+    //    String query = "SELECT * FROM Etudiant_management_system WHERE firstName = :firstname";
+
+        //return etudiantRepository.findByFirstName(firstname);
+    //}
+    public List<EtudiantDetails> getEtudiantByGroupe(Long id){
+
+        List<Etudiant> etudiants=etudiantRepository.findAll();
+        ResponseEntity<Groupe[]> response=restTemplate.getForEntity(this.URLGroups+"/api/Groupe/",Groupe[].class);
+        Groupe[] groupes=response.getBody();
+
+        List<Etudiant> etudiantsInGroup = etudiants.stream()
+                .filter(e -> e.getId_Groupe().equals(id))
+                .toList();
+
+        // Map filtered etudiants to EtudiantDetails
+        return  etudiantsInGroup.stream()
+                .map(etudiant -> mapToEtudiantResponse(etudiant, groupes))
+                .toList();
+    }
+
     private EtudiantDetails mapToEtudiantResponse(Etudiant etudiant,Groupe[] groupes){
 
 
@@ -68,4 +115,6 @@ public class EtudiantService {
                 .build();
 
     }
+
+
 }

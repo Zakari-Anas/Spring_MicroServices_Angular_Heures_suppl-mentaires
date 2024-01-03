@@ -5,6 +5,7 @@ import com.supp.Cours.model.Cours;
 import com.supp.Cours.model.CoursDetails;
 import com.supp.Cours.model.Prof;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.expression.ExpressionException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -44,8 +45,9 @@ public class CoursService {
 
 
         return CoursDetails.builder()
+                .id(cour.getId())
                 .nom(cour.getNom())
-                .Duree(cour.getDuree())
+                .duree(cour.getDuree())
                 .prof(prof)
                 .build();
 
@@ -55,7 +57,7 @@ public class CoursService {
             Cours courById=courRespository.findById(id).orElseThrow(()->new Exception("Cour doesn't existe"));
             Prof profBYCour=restTemplate.getForObject(this.URLPROFS+"/api/Employees/"+courById.getId_prof(),Prof.class);
             return  CoursDetails.builder()
-                    .Duree(courById.getDuree())
+                    .duree(courById.getDuree())
                     .nom(courById.getNom())
                     .prof(profBYCour)
                     .build();
@@ -63,7 +65,18 @@ public class CoursService {
 
         public Cours addCours(Cours cour){
 
-        return courRespository.save(cour);
-    }
+            return courRespository.save(cour);
+        }
+        public CoursDetails deleteCours(Long id){
+           Cours cours=courRespository.findById(id).orElseThrow(()->new ExpressionException("cours not found"));
+            Prof profBYCour=restTemplate.getForObject(this.URLPROFS+"/api/Employees/"+cours.getId_prof(),Prof.class);
+
+            courRespository.deleteById(id);
+             return CoursDetails.builder().id(cours.getId())
+                     .nom(cours.getNom())
+                     .duree(cours.getDuree())
+                     .prof(profBYCour)
+                     .build();
+        }
 
 }

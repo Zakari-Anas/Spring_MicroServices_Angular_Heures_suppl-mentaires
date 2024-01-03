@@ -17,5 +17,5 @@ public class Groupe {
     private Long id;
     private String name;
     private String count;
-    private Long id_prof;
+
 }

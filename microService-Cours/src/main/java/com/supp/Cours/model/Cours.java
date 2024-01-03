@@ -1,9 +1,6 @@
 package com.supp.Cours.model;
 import com.supp.Cours.model.Prof;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
@@ -17,11 +14,11 @@ public class Cours {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @Column(name = "nom")
     private String nom;
-
-    private float Duree;
-
+    @Column(name = "duree")
+    private Float duree;
+    @Column(name = "id_prof")
     private Long id_prof;
 
 
