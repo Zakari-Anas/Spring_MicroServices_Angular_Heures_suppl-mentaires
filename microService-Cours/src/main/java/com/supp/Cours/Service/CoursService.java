@@ -57,6 +57,7 @@ public class CoursService {
             Cours courById=courRespository.findById(id).orElseThrow(()->new Exception("Cour doesn't existe"));
             Prof profBYCour=restTemplate.getForObject(this.URLPROFS+"/api/Employees/"+courById.getId_prof(),Prof.class);
             return  CoursDetails.builder()
+                    .id(courById.getId())
                     .duree(courById.getDuree())
                     .nom(courById.getNom())
                     .prof(profBYCour)

@@ -27,6 +27,26 @@ public class EmploiDuTempsService {
        return emploiDuTempsReository.save(emploiDuTemp);
     }
 
+    public EmploiDuTempsDetails findEMploiById(Long id) throws Exception{
+       EmploiDuTemp emploiDuTemp= emploiDuTempsReository.findById(id).orElseThrow(()->new Exception("Enregistrement introuvable"));
+
+        Groupe groupe=restTemplate.getForObject(this.URLGroups+"/api/Groupe/"+emploiDuTemp.getGroupe_id(),Groupe.class);
+
+        CoursDetails coursDetails=restTemplate.getForObject(this.URLCours+"/api/Cours/"+emploiDuTemp.getCours_id(),CoursDetails.class);
+
+       return EmploiDuTempsDetails.builder()
+                .groupe(groupe)
+                .coursDetails(coursDetails)
+                .heure_debut(emploiDuTemp.getHeure_debut())
+                .heure_fin(emploiDuTemp.getHeure_fin())
+                .build();
+
+    }
+    public void deleteEmploi(Long id){
+
+        emploiDuTempsReository.deleteById(id);
+    }
+
     public List<EmploiDuTempsDetails> getAll() {
 
         List<EmploiDuTemp> emploiDuTempList = emploiDuTempsReository.findAll();
@@ -41,6 +61,32 @@ public class EmploiDuTempsService {
 
 
     }
+
+
+    public EmploiDuTempsDetails UpdateEmploi(EmploiDuTemp emploiDuTemp,Long id) throws Exception{
+
+        EmploiDuTemp emploiDuTemp1=emploiDuTempsReository.findById(id).orElseThrow(()->new Exception("Enregistrement introuvable"));
+        emploiDuTemp1.setCours_id(emploiDuTemp.getCours_id());
+        emploiDuTemp1.setGroupe_id(emploiDuTemp.getGroupe_id());
+        emploiDuTemp1.setHeure_debut(emploiDuTemp.getHeure_debut());
+        emploiDuTemp1.setHeure_fin(emploiDuTemp.getHeure_fin());
+
+        Groupe groupe=restTemplate.getForObject(this.URLGroups+"/api/Groupe/"+emploiDuTemp1.getGroupe_id(),Groupe.class);
+
+        CoursDetails Cours=restTemplate.getForObject(this.URLCours+ "/api/Cours/"+emploiDuTemp1.getCours_id(),CoursDetails.class);
+
+        emploiDuTempsReository.save(emploiDuTemp1);
+        return EmploiDuTempsDetails.builder()
+                .groupe(groupe)
+                .coursDetails(Cours)
+                .heure_debut(emploiDuTemp1.getHeure_debut())
+                .heure_fin(emploiDuTemp1.getHeure_fin())
+                .build();
+
+
+    }
+
+
     private EmploiDuTempsDetails mapToEmploiResponse(EmploiDuTemp emploiDuTemp,Groupe []groupe,CoursDetails [] coursDetails){
 
         Groupe grp= Arrays.stream(groupe)

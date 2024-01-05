@@ -28,6 +28,21 @@ public class EmploiDuTempController {
 
     }
 
+    @DeleteMapping("{id}")
+
+    private void deleteEmploi(@PathVariable Long id){
+        emploiDuTempsService.deleteEmploi(id);
+    }
+
+    @PutMapping("/update/{id}")
+    private EmploiDuTempsDetails UpdateEmploi(@RequestBody EmploiDuTemp emploiDuTemp,@PathVariable Long id) throws Exception{
+        return emploiDuTempsService.UpdateEmploi(emploiDuTemp,id);
+    }
+    @GetMapping("{id}")
+    private EmploiDuTempsDetails findEMploiById(@PathVariable Long id) throws Exception{
+        return emploiDuTempsService.findEMploiById(id);
+    }
+
 
 
 }
