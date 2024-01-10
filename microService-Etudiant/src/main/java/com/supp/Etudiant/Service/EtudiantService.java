@@ -98,6 +98,10 @@ public class EtudiantService {
                 .toList();
     }
 
+    public List<Etudiant> getAllEtudiant(){
+
+        return  etudiantRepository.findAll();
+    }
     private EtudiantDetails mapToEtudiantResponse(Etudiant etudiant,Groupe[] groupes){
 
 

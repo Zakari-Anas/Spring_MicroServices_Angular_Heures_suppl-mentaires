@@ -41,4 +41,9 @@ public class CoursController {
 
         return coursService.deleteCours(id);
     }
+
+    @PutMapping("{id}")
+    public Cours updateCours(@PathVariable Long id ,@RequestBody Cours cours)throws Exception{
+            return coursService.updateCours(id,cours);
+    }
 }

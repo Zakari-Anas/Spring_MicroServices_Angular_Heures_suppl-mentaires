@@ -8,8 +8,11 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="Etudiant" />
+        <module name="paiement" />
+        <module name="salle" />
         <module name="GateWay" />
         <module name="microService-employe" />
+        <module name="reservation" />
         <module name="emploiDuTemp" />
         <module name="Cours" />
         <module name="EurekaServer1" />
@@ -30,6 +33,9 @@
       <module name="emploiDuTemp" options="-parameters" />
       <module name="microService-employe" options="-parameters" />
       <module name="microService-groupe" options="-parameters" />
+      <module name="paiement" options="-parameters" />
+      <module name="reservation" options="-parameters" />
+      <module name="salle" options="-parameters" />
     </option>
   </component>
 </project>

@@ -26,6 +26,10 @@ public class EtudiantController {
         return etudiantRepository.save(e);
 
     }
+    @GetMapping("/all")
+    public List<Etudiant> getAllE(){
+        return etudiantService.getAllEtudiant();
+    }
 
     @DeleteMapping("{id}")
     public void deleteEtudiant(@PathVariable Long id)

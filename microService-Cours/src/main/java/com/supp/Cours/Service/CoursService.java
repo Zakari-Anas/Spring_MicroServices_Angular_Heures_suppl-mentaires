@@ -73,11 +73,20 @@ public class CoursService {
             Prof profBYCour=restTemplate.getForObject(this.URLPROFS+"/api/Employees/"+cours.getId_prof(),Prof.class);
 
             courRespository.deleteById(id);
+
              return CoursDetails.builder().id(cours.getId())
                      .nom(cours.getNom())
                      .duree(cours.getDuree())
                      .prof(profBYCour)
                      .build();
+        }
+
+        public Cours updateCours(Long id, Cours cours) throws Exception{
+            Cours cours1=courRespository.findById(id).orElseThrow(()->new Exception("Cour Not found"));
+            cours1.setDuree(cours.getDuree());
+            cours1.setNom(cours.getNom());
+            cours1.setId_prof(cours.getId_prof());
+            return courRespository.save(cours1);
         }
 
 }

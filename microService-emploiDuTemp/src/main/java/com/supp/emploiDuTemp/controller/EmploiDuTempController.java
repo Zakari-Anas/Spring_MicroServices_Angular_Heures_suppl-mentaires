@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/Extra/")
+@CrossOrigin(origins = "http://localhost:4200" ,allowedHeaders = "*")
 public class EmploiDuTempController {
 
     @Autowired
@@ -38,6 +39,7 @@ public class EmploiDuTempController {
     private EmploiDuTempsDetails UpdateEmploi(@RequestBody EmploiDuTemp emploiDuTemp,@PathVariable Long id) throws Exception{
         return emploiDuTempsService.UpdateEmploi(emploiDuTemp,id);
     }
+
     @GetMapping("{id}")
     private EmploiDuTempsDetails findEMploiById(@PathVariable Long id) throws Exception{
         return emploiDuTempsService.findEMploiById(id);
